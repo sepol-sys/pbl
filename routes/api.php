@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/pbl/register', [AuthController::class, 'register']);
-Route::post('/pbl/login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -26,6 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // Route::post('/pbl/register', [AuthController::class, 'register']);
     // Route::post('/pbl/login', [AuthController::class, 'login']);
-    Route::get('/pbl/me', [AuthController::class, 'me']);
-    Route::get('/pbl/logout', [AuthController::class, 'logout']);
+    Route::get('me', [AuthController::class, 'me']);
+    Route::get('logout', [AuthController::class, 'logout']);
 });
