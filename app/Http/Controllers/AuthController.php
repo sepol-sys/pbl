@@ -25,7 +25,8 @@ class AuthController extends Controller
         ];
         $validator = Validator::make($req->all(), $rules);
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            // return response()->json($validator->errors(), 400);
+            return $response = ['message' => 'email sudah didaftarkan'];
         }
         //create new user in users table
         $user = User::create([
