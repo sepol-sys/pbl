@@ -21,6 +21,7 @@ class AuthController extends Controller
             "handphone" => 'required|string',
             "gender" => 'required|string',
             'username' => 'required|string',
+            'birth' => 'required|string',
             'email' => 'required|string|unique:users',
             'password' => 'required|string|min:6'
         ];
@@ -34,7 +35,9 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $req->name,
             'username' => $req->username,
+            'birth' => $req->birth,
             'email' => $req->email,
+            'roles' => $req->roles,
             //'level' => 0,
             'address' => $req->address,
             'gender' => $req->gender,
