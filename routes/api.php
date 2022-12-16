@@ -1,9 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BiayaAdmin;
 use App\Http\Controllers\DaftarAnggota;
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\Pengembalian;
+use App\Http\Controllers\registersimpanan;
+use App\Http\Controllers\Setoran;
+use App\Models\biaya;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +32,16 @@ Route::post('email/verification-notification', [EmailVerificationController::cla
 Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
 
 Route::post('DaftarAnggota', [DaftarAnggota::class, 'register']);
+
+Route::post('registersimpanan', [registersimpanan::class, 'register']);
+Route::post('BiayaAdmin', [BiayaAdmin::class, 'register']);
+Route::post('setoran', [Setoran::class, 'register']);
+Route::post('pengembalian', [Pengembalian::class, 'register']);
+
+
+
+
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
