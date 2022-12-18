@@ -38,6 +38,10 @@ Route::post('BiayaAdmin', [BiayaAdmin::class, 'register']);
 Route::post('setoran', [Setoran::class, 'register']);
 Route::post('pengembalian', [Pengembalian::class, 'register']);
 
+Route::get('anggota', [DaftarAnggota::class, 'me']);
+
+Route::get('data', [AuthController::class, 'index']);
+
 
 
 

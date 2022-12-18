@@ -40,6 +40,21 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
+
+        'Anggota' => [
+            'driver' => 'passport',
+            'provider' => 'Anggota',
+        ],
+
+        'anggota' => [
+            'driver' => 'passport',
+            'provider' => 'anggota',
+        ],
     ],
 
     /*
@@ -63,6 +78,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'anggota' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\anggota::class,
+        ],
+
+        'Anggota' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Anggota::class,
         ],
 
         // 'users' => [

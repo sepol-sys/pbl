@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Testing\Fluent\Concerns\HasApiTokens;
+//use Illuminate\Testing\Fluent\Concerns\HasApiTokens;
+use Laravel\Sanctum\Contracts\HasApiTokens;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class Anggota extends Model
+
+class Anggota extends  Model
 {
-    use HasFactory;
+    use HasFactory ;
 
     /**
      * The attributes that are mass assignable.

@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Validator;
 class AuthController extends Controller
 {
 
+    public function index()
+    {
+        $data = User::all();
+        return response()->json(['data' => $data]);
+    }
+
     public function register(Request $req)
     {
         //valdiate
@@ -22,15 +28,39 @@ class AuthController extends Controller
             "gender" => 'required|string',
             'username' => 'required|string',
             'birth' => 'required|string',
-            'email' => 'required|string|unique:users',
             'password' => 'required|string|min:6'
         ];
+        $validator = Validator::make($req->all(), $rules);
+        if ($validator->fails()) {
+            // $response = ['message' => 'Incorrect email or password'];
+            return $response = ['value' => '4'];
+            //response()->json($validator->errors(), 400);
+        }
+
+        $rules = [
+            'email' => 'required|string|email',
+        ];
+
+        $validator = Validator::make($req->all(), $rules);
+        if ($validator->fails()) {
+            // $response = ['message' => 'Incorrect email or password'];
+            return $response = ['value' => '3'];
+            //response()->json($validator->errors(), 400);
+        }
+
+        $rules = [
+            'email' => 'required|string|unique:users',
+        ];
+
         $validator = Validator::make($req->all(), $rules);
         if ($validator->fails()) {
             // $response = ['message' => 'Incorrect email or password'];
             return $response = ['value' => '2'];
             //response()->json($validator->errors(), 400);
         }
+
+
+
         //create new user in users table
         $user = User::create([
             'name' => $req->name,

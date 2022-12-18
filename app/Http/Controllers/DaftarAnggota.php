@@ -40,7 +40,18 @@ class DaftarAnggota extends Controller
             'tanggungan' => $req->tanggungan,
             'tempat_tinggal' => $req->tempat_tinggal,
         ]);
-        return $response = ['value' => '1', 'anggota' => $anggota,];
+        //$token = $anggota->createToken('Personal Access Token')->plainTextToken;
+        return $response = ['value' => '1', 'anggota' => $anggota];
         //return response()->json($response, 200);
+
+    }
+
+    public function me(Request $req)
+    {
+        $anggota = Anggota::anggota();
+        $this->response['message'] = 'succes';
+        $this->response['data'] = $anggota;
+
+        return response()->json($this->response, 200);
     }
 }
