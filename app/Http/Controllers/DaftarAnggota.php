@@ -32,7 +32,7 @@ class DaftarAnggota extends Controller
             'tanggungan' => 'required|string',
             'tempat_tinggal' => 'required|string',
         ];
-        
+
         $validator = Validator::make($req->all(), $rules);
         if ($validator->fails()) {
             //response()->json($validator->errors(), 400);
@@ -42,9 +42,9 @@ class DaftarAnggota extends Controller
 
         if ($user) {
 
-            $anggota= Anggota::where('email', $user->email)->first();
+            $anggota = Anggota::where('email', $user->email)->first();
             //dd($anggota);
-            if (!$anggota){
+            if (!$anggota) {
                 $na =  generateUniqueAnggota();
                 $anggota = Anggota::create([
                     'email' => $user->email,
@@ -54,17 +54,16 @@ class DaftarAnggota extends Controller
                     'tanggungan' => $req->tanggungan,
                     'tempat_tinggal' => $req->tempat_tinggal,
                 ]);
-    
+
                 $user->nomor_anggota = $na;
                 $user->save();
                 //$token = $anggota->createToken('Personal Access Token')->plainTextToken;
                 return $response = ['value' => '1', 'anggota' => $anggota];
                 //return response()->json($response, 200);
-            } 
+            }
             return response()->json(['message' => 'sudah didaftarkan '], 403);
         }
         return response()->json(['message' => 'user tidak ditemukan'], 404);
-        
     }
 
     // public function me(Request $req)
