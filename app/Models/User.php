@@ -33,6 +33,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'roles,'
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            $anggota = new Anggota();
+            $anggota->email = $user->email;
+            $anggota->save();
+        });
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

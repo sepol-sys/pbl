@@ -11,7 +11,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 class Anggota extends  Model
 {
-    use HasFactory ;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +19,7 @@ class Anggota extends  Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'email',
         'pekerjaan',
         'nomor_anggota',
         'tempat_tinggal',
