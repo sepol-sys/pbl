@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class DaftarAnggota extends Controller
 {
     //
-    public function register(Request $req, $id)
+    public function register(Request $req)
     {
 
         function generateUniqueAnggota()
@@ -38,7 +38,7 @@ class DaftarAnggota extends Controller
             //response()->json($validator->errors(), 400);
         }
 
-        $user = User::find($id);
+        $user = User::find(Auth::user()->id);
 
         if ($user) {
 

@@ -31,7 +31,7 @@ Route::post('image', [ImageController::class, 'imageStore']);
 Route::post('email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
 Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
 
-Route::post('DaftarAnggota/{id}', [DaftarAnggota::class, 'register']);
+Route::post('DaftarAnggota', [DaftarAnggota::class, 'register'])->middleware('auth:sanctum');
 
 Route::post('registersimpanan', [registersimpanan::class, 'register']);
 Route::post('BiayaAdmin', [BiayaAdmin::class, 'register']);
