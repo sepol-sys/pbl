@@ -61,9 +61,9 @@ class DaftarAnggota extends Controller
                 return $response = ['value' => '1', 'anggota' => $anggota];
                 //return response()->json($response, 200);
             }
-            return response()->json(['message' => 'sudah didaftarkan '], 403);
+            return response()->json(['value' => '2', 'message' => 'sudah didaftarkan']);
         }
-        return response()->json(['message' => 'user tidak ditemukan'], 404);
+        
     }
 
     // public function me(Request $req)
